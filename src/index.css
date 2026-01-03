@@ -244,3 +244,70 @@ html::-webkit-scrollbar, body::-webkit-scrollbar, #root::-webkit-scrollbar {
   background: #0071e3;
   border-color: #0071e3;
 }
+
+
+/* Фиксируем секции, чтобы они не гуляли */
+.section {
+  position: relative; /* Или absolute, если делаем Pinned scroll */
+  opacity: 1; /* Пусть GSAP сам управляет прозрачностью */
+  /* Убираем любые transform отсюда */
+}
+
+/* На мобилках текст часто слишком широкий, поправим */
+@media (max-width: 768px) {
+  .hero-title { font-size: 15vw; } /* Чуть меньше на телефоне */
+  h2 { font-size: 3rem; }
+}
+
+/* --- ЛОАДЕР (ЗАГРУЗОЧНЫЙ ЭКРАН) --- */
+.loader-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000; /* Черный фон */
+  z-index: 9999; /* Поверх всего */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 1s ease-in-out, visibility 1s; /* Плавное исчезновение */
+}
+
+/* Класс для скрытия */
+.loader-screen.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.loader-img {
+  width: 80px; /* Размер иконки загрузки, можешь менять */
+  height: auto;
+}
+
+.common-padding {
+  padding: 50px 20px;
+}
+.bg-zinc {
+  background-color: #101010;
+}
+.section-heading {
+  color: #86868b;
+  font-weight: 600;
+  font-size: 3rem;
+  opacity: 0; /* Для анимации */
+  transform: translateY(20px);
+}
+.link {
+  color: #2997ff;
+  font-size: 1.1rem;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(20px);
+}
+.video-carousel_container {
+    display: flex;
+    gap: 20px;
+    padding-left: 5%;
+}
